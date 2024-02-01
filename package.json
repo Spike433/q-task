@@ -25,6 +25,8 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
     "@types/lodash.isequal": "4.5.6",
     "@types/node": "20.4.0",
     "@types/nprogress": "0.2.0",
@@ -42,6 +44,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "prettier": "3.0.0",
     "semantic-release": "^23.0.0",
+    "semantic-release-github-actions-tags": "^1.0.3",
     "typescript": "5.1.6",
     "vite": "4.4.0",
     "vite-plugin-checker": "^0.6.4"
