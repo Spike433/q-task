@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useRoutes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 export function App() {
   return (
-    <React.Fragment>
-      <Helmet>
-        <title>Posts</title>
-      </Helmet>
-      <div>Test</div>
-    </React.Fragment>
+    <Routes>
+    <Route path="/" 
+    element={<div>Home</div>} />
+    <Route path="/posts" 
+    element={<div>Posts</div>} />
+  </Routes>
   );
 }
