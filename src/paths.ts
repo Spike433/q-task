@@ -1,5 +1,18 @@
-export const paths = {
-  index: '/',
-  blank: '/blank',
-  docs: 'https://material-kit-pro-react-docs.devias.io',
-};
+import { ApplicationRoute } from "./types/application-route";
+import { HomePage } from './pages/Home/Home';
+
+export const paths: ApplicationRoute[] = [{
+  id:'home',  
+  path: '/',
+  element: HomePage,  
+}];
+
+// export const outOfLayoutPaths = [
+//   {
+//     id:'login',
+//     path: '/login',
+//     component: Login,
+//     exact: true
+//   }
+// ];
+

@@ -1,13 +1,7 @@
 import React from 'react';
 
-const PostsPage = () => {
-
+export function PostsPage(){
   return (
-    <div>
-        Test
-    </div>
-    
+    <div>Posts</div>
   );
 };
-
-export default PostsPage;
