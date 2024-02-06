@@ -1,8 +1,4 @@
-{
-  "name": "@devias-kit-pro/vite-starter",
-  "version": "6.4.2",
-  "author": "Devias",
-  "homepage": "https://devias.io",
+{  
   "private": true,
   "scripts": {
     "dev": "vite",
