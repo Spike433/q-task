@@ -1,20 +1,7 @@
 import React from 'react';
+import { PostCard } from 'src/components/posts/post-card';
 import { ApiServices } from 'src/services';
-import styled from 'styled-components';
-
-interface Comment {
-  id: number;
-  text: string;
-  nickname: string;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  description: string;
-  author: string;
-  comments: Comment[];
-}
+import { Post } from 'src/types/post';
 
 const posts: Post[] = [
   {
@@ -69,21 +56,8 @@ const posts: Post[] = [
   },
 ];
 
-const PostContainer = styled.div`
-  padding: 5px;
-  background-color: #f5f2f2b7;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #ddd;
-  }
-`;
-
 export function PostsPage(){
   const [search, setSearch] = React.useState('');  
-  const [filteredPosts, setFilteredPosts] = React.useState<Post[]>([]);
 
   Promise.all([
     ApiServices.postService.getPosts(),
@@ -94,18 +68,9 @@ export function PostsPage(){
       console.log(error);    
     })
     .finally(() => {
-      console.log('Done');
+      //setLoading(false);
     });
   
-  
-  React.useEffect(() => {
-    setFilteredPosts(
-      posts.filter((post) =>
-        post.author.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search]);
-
   return (
   <div>    
     <div style={{margin:'10px'}}>
@@ -119,44 +84,9 @@ export function PostsPage(){
       />
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-      {filteredPosts.map((post) => (        
-        <div 
-          key={post.id} 
-          style={{ 
-            border: '3px solid #ccc', 
-            padding: '20px', 
-            margin: '10px', 
-            flex: '1 0 46%', 
-            boxSizing: 'border-box',
-            backgroundColor: '#f5f2f2b7',
-            borderRadius: '5px'
-          }}
-        >
-          <PostContainer>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent:'space-between' }}>
-            <h2 style={{ color: '#333', fontFamily: 'Arial' }}>{post.title}</h2>
-            <img 
-              style={{ margin: '5px' }}
-              src={`https://picsum.photos/seed/${post.id}/70`} 
-              alt="Post"           
-            />
-          </div>
-          </PostContainer>
-          <hr/>
-          <p style={{ color: '#666', fontFamily: 'Arial' }}>{post.description}</p>
-          <h4>
-            <span style={{ display: 'block', textAlign: 'right', fontStyle:'italic', color: '#817f7f', fontFamily: 'Arial' }}>{post.author}</span>
-          </h4>
-          <h3 style={{ color: '#666', fontFamily: 'Arial' }}>Comments</h3>
-          
-          {post.comments.map((comment) => (
-            <div key={comment.id}  
-              style={{ margin:'10px', paddingLeft:'10px',paddingBottom:'10px', paddingRight:'10px', border: '2px solid #ccc', backgroundColor: '#f3f1f1', borderRadius: '5px' }}>
-              <p style={{ color: '#666', fontFamily: 'Arial' }}>{comment.text}</p>            
-              <span style={{  display: 'block', textAlign: 'right', color: '#8f8b8b', fontFamily: 'Arial' }}>{comment.nickname}</span>
-            </div>
-          ))}
-        </div>
+      {posts.map((post) => (        
+       <PostCard key={post.id}  
+            post={post} />
       ))}
     </div>
   </div>
