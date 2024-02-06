@@ -1,4 +1,5 @@
 import React from 'react';
+import { ApiServices } from 'src/services';
 import styled from 'styled-components';
 
 interface Comment {
@@ -84,6 +85,18 @@ export function PostsPage(){
   const [search, setSearch] = React.useState('');  
   const [filteredPosts, setFilteredPosts] = React.useState<Post[]>([]);
 
+  Promise.all([
+    ApiServices.postService.getPosts(),
+  ]).then((postResponse) => {
+      console.log(postResponse);
+    })
+    .catch(error => {
+      console.log(error);    
+    })
+    .finally(() => {
+      console.log('Done');
+    });
+  
   
   React.useEffect(() => {
     setFilteredPosts(
@@ -94,7 +107,7 @@ export function PostsPage(){
   }, [search]);
 
   return (
-  <div>
+  <div>    
     <div style={{margin:'10px'}}>
       <h1 style={{ color: '#333', fontFamily: 'Arial' }}>Posts</h1>
       <input
