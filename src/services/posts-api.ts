@@ -2,11 +2,13 @@ import { AxiosPromise } from "axios";
 import BaseAPI from "./base/abstract-api";
 import { Post as IPost } from "./types";
 
+const host = 'https://dummyjson.com';
+
 class PostAPI extends BaseAPI{
     private static _instance: PostAPI;
 
     private constructor(){
-        const baseUrl = `$https://jsonplaceholder.typicode.com/posts`;        
+        const baseUrl = `${host}`;        
         super(baseUrl);
     }
 
@@ -15,7 +17,7 @@ class PostAPI extends BaseAPI{
     }
 
     public getPosts(): AxiosPromise<IPost[]>{        
-        return this.instance.get('/posts');
+        return this.instance.get('/products');
     }
 }
 
