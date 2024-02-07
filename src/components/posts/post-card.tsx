@@ -1,4 +1,4 @@
-import { Post } from "src/types/post";
+import { Post } from "src/services/types";
 
 interface PostProps {
     post: Post;

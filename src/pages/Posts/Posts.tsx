@@ -1,7 +1,7 @@
 import React from 'react';
 import { PostCard } from 'src/components/posts/post-card';
 import { ApiServices } from 'src/services';
-import { Post } from 'src/types/post';
+import { Post } from 'src/services/types';
 
 const posts: Post[] = [
   {
