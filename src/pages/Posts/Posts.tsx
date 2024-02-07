@@ -37,8 +37,9 @@ export function PostsPage(){
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
       {posts.map((post) => (        
-       <PostCard key={post.id}  
-            post={post} />
+       <PostCard 
+          key={post.id}  
+          post={post} />
       ))}
     </div>
   </div>

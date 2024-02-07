@@ -1,4 +1,5 @@
 import { Post } from "src/services/types";
+import { CommentCard } from "./comment-card";
 
 interface PostProps {
     post: Post;
@@ -34,11 +35,9 @@ export function PostCard({post}: PostProps){
           <h3 style={{ color: '#666', fontFamily: 'Arial' }}>Comments</h3>
           
           {post.comments.map((comment) => (
-            <div key={comment.id}  
-              style={{ margin:'10px', paddingLeft:'10px',paddingBottom:'10px', paddingRight:'10px', border: '2px solid #ccc', backgroundColor: '#f3f1f1', borderRadius: '5px' }}>
-              <p style={{ color: '#666', fontFamily: 'Arial' }}>{comment.text}</p>            
-              <span style={{  display: 'block', textAlign: 'right', color: '#8f8b8b', fontFamily: 'Arial' }}>{comment.nickname}</span>
-            </div>
+            <CommentCard 
+              key={comment.id} 
+              comment={comment} />
           ))}
         </div>
     );
