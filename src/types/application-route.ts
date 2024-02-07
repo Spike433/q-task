@@ -1,5 +1,3 @@
-import React from "react";
-
 // Definition of the ApplicationRoute interface
 export interface ApplicationRoute {
     readonly id: string;
