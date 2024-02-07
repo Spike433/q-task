@@ -1,13 +1,17 @@
-import { useSearchParams as _useSearchParams } from 'react-router-dom';
+import React from "react";
+import { Filters } from "src/services/types";
 
-// TODO: Maybe unify React-Router and Next.js Router to have the same behaviour
-//  In Next.js we do not have the set. There we need to redirect manually.
+export const usePostSearch = () => {
+  const [state, setState] = React.useState<Filters>(
+    { query: '' }
+  );
 
-/**
- * Returns ReadOnly search params
- */
-export const useSearchParams = () => {
-  const [searchParams] = _useSearchParams();
+  const handleFiltersChange = React.useCallback((query: string): void => {
+    setState((prevState) => ({ ... prevState, query }));
+  },[]);
 
-  return searchParams;
+  return {
+    state,
+    handleFiltersChange
+  }
 };

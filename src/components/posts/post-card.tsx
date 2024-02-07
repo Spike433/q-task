@@ -5,7 +5,7 @@ interface PostProps {
     post: Post;
 }
 
-export function PostCard({post}: PostProps){
+export const PostCard = ({post}: PostProps) => {
     return (
         <div 
           key={post.id} 

@@ -11,3 +11,7 @@ export interface Post {
     text: string;
     nickname: string;
   }
+
+  export interface Filters {
+    query?: string;
+  }

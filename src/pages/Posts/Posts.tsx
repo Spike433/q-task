@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { PostCard } from 'src/components/posts/post-card';
+import { PostSearch } from 'src/components/posts/post-search';
 import useDebounce from 'src/hooks/use-debounce';
+import { usePostSearch } from 'src/hooks/use-search-params';
 import { ApiServices } from 'src/services';
 import { Post } from 'src/services/types';
 
-export function PostsPage(){
-  const [search, setSearch] = React.useState('');
+export function PostsPage(){  
+  const postsSearch = usePostSearch();  
   const [posts, setPosts] = React.useState<Post[]>([]);
   const [loading, setLoading] = React.useState(false);
 
-  const debouncedSearch = useDebounce(search, 250);
+  const debouncedSearch = useDebounce(postsSearch.state.query, 250);
   console.log('renders');
 
   React.useEffect(() => {
@@ -41,12 +43,7 @@ export function PostsPage(){
   <>   
     <div style={{margin:'10px'}}>
       <h1 style={{ color: '#333', fontFamily: 'Arial' }}>Posts</h1>
-      <input
-        type="text"
-        placeholder='Search Authors In Posts...'
-        onChange={(e) => setSearch(e.target.value)}
-        style={{ padding: '10px', borderRadius:'5px', width:'250px'}}
-      />
+     <PostSearch onFiltersChange={postsSearch.handleFiltersChange}/>
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
       {loading ? <h1 style={{margin:'10px'}}>Loading...</h1> :
