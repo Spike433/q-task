@@ -1,21 +1,23 @@
 import React from 'react';
 import { PostCard } from 'src/components/posts/post-card';
+import useDebounce from 'src/hooks/use-debounce';
 import { ApiServices } from 'src/services';
 import { Post } from 'src/services/types';
 
 export function PostsPage(){
   const [search, setSearch] = React.useState('');
-  const [posts, setPosts] = React.useState<Post[]>();
+  const [posts, setPosts] = React.useState<Post[]>([]);
   const [loading, setLoading] = React.useState(false);
 
+  const debouncedSearch = useDebounce(search, 250);
   console.log('renders');
 
   React.useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-
+    
     Promise.all([      
-      ApiServices.postService.getPosts(search),
+      ApiServices.postService.getPosts(debouncedSearch),
       
       // abort previous request if new request is made, latency improvement besides throttling
       { signal: controller.signal}
@@ -33,7 +35,7 @@ export function PostsPage(){
     return () => {
       controller.abort();
     };
-  },[search])
+  },[debouncedSearch])
   
   return (
   <>   
@@ -42,7 +44,6 @@ export function PostsPage(){
       <input
         type="text"
         placeholder='Search Authors In Posts...'
-        value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{ padding: '10px', borderRadius:'5px', width:'250px'}}
       />
