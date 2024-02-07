@@ -5,26 +5,38 @@ import { Post } from 'src/services/types';
 
 export function PostsPage(){
   const [search, setSearch] = React.useState('');
-  const [posts, setPosts] = React.useState<Post[]>([]);
+  const [posts, setPosts] = React.useState<Post[]>();
+  const [loading, setLoading] = React.useState(false);
+
+  console.log('renders');
 
   React.useEffect(() => {
-    Promise.all([
-      //setLoading(true),
-      ApiServices.postService.getPosts(),
+    const controller = new AbortController();
+    setLoading(true);
+
+    Promise.all([      
+      ApiServices.postService.getPosts(search),
+      
+      // abort previous request if new request is made, latency improvement besides throttling
+      { signal: controller.signal}
     ])
-    .then(([{data: posts}]) => {
+    .then(([{ data: posts}]) => {
       setPosts(posts);
     })
     .catch(error => {
       console.log(error);    
     })
     .finally(() => {
-      //setLoading(false);
+      setLoading(false);
     });
-  },[])
+
+    return () => {
+      controller.abort();
+    };
+  },[search])
   
   return (
-  <div>    
+  <>   
     <div style={{margin:'10px'}}>
       <h1 style={{ color: '#333', fontFamily: 'Arial' }}>Posts</h1>
       <input
@@ -36,12 +48,13 @@ export function PostsPage(){
       />
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-      {posts.map((post) => (        
+      {loading ? <h1 style={{margin:'10px'}}>Loading...</h1> :
+      posts?.map((post) => (        
        <PostCard 
           key={post.id}  
           post={post} />
       ))}
     </div>
-  </div>
+  </>
   );
 };

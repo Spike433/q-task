@@ -16,8 +16,8 @@ class PostAPI extends BaseAPI{
         return this._instance || (this._instance = new this());        
     }
 
-    public getPosts(): AxiosPromise<IPost[]>{        
-        return this.instance.get('/posts');
+    public getPosts(query:string): AxiosPromise<IPost[]>{        
+        return this.instance.get(`/posts?author_like=${query}`);
     }
 }
 
