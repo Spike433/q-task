@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React  from 'react';
+import LoadingIndicator, {  } from 'src/components/core/loading-indicator/loading';
 import { PostCard } from 'src/components/posts/post-card';
 import { PostSearch } from 'src/components/posts/post-search';
 import useDebounce from 'src/hooks/use-debounce';
@@ -9,7 +10,7 @@ import { Post } from 'src/services/types';
 export function PostsPage(){  
   const postsSearch = usePostSearch();  
   const [posts, setPosts] = React.useState<Post[]>([]);
-  const [loading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(false);
 
   const debouncedSearch = useDebounce(postsSearch.state.query, 250);
   console.log('renders');
@@ -46,7 +47,7 @@ export function PostsPage(){
      <PostSearch onFiltersChange={postsSearch.handleFiltersChange}/>
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-      {loading ? <h1 style={{margin:'10px'}}>Loading...</h1> :
+      {isLoading ? <LoadingIndicator />:
       posts?.map((post) => (        
        <PostCard 
           key={post.id}  
