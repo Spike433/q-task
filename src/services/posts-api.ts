@@ -2,7 +2,7 @@ import { AxiosPromise } from "axios";
 import BaseAPI from "./base/abstract-api";
 import { Post as IPost } from "./types";
 
-const host = 'https://dummyjson.com';
+const host = 'https://trusthub-frotned-server-json.azurewebsites.net';
 
 class PostAPI extends BaseAPI{
     private static _instance: PostAPI;
@@ -16,8 +16,8 @@ class PostAPI extends BaseAPI{
         return this._instance || (this._instance = new this());        
     }
 
-    public getPosts(): AxiosPromise<IPost[]>{        
-        return this.instance.get('/products');
+    public getPosts(query:string | undefined): AxiosPromise<IPost[]>{        
+        return this.instance.get(`/posts?author_like=${query}`);
     }
 }
 
