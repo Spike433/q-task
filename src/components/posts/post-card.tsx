@@ -6,6 +6,9 @@ interface PostProps {
 }
 
 export const PostCard = ({post}: PostProps) => {
+  const handlePostClick = (id: number) => {
+    console.log('Post clicked:', id);
+  }
     return (
         <div 
           key={post.id} 
@@ -16,8 +19,10 @@ export const PostCard = ({post}: PostProps) => {
             flex: '1 0 46%', 
             boxSizing: 'border-box',
             backgroundColor: '#f5f2f2b7',
-            borderRadius: '5px'
+            borderRadius: '5px',
+            cursor: 'pointer'
           }}
+          onClick={() => handlePostClick(post.id)}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent:'space-between' }}>
             <h2 style={{ color: '#333', fontFamily: 'Arial' }}>{post.title}</h2>
