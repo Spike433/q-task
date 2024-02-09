@@ -6,12 +6,17 @@ import { Post } from "src/services/types";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 import { useMounted } from "src/hooks/use-mounted";
 import { isIdValid } from "src/utils/id-validator";
+import { parseHttpErrorMessages } from "src/utils/httpErrorParse";
+import LoadingIndicator from "src/components/core/loading-indicator/loading";
 
 export function PostDetails() {
     const { postId } = useParams();
     const isMounted = useMounted();
+
     const [post, setPost] = React.useState<Post | null>(null);
     const [isLoading, setLoading] = React.useState(false);
+    const [backendValidationErrors, setBackendValidationErrors] = React.useState<string[]>([]);
+    
     console.log('renders');
     
     React.useEffect(() => {
@@ -34,7 +39,7 @@ export function PostDetails() {
             }            
         })
         .catch(error => {
-            console.log(error);
+            setBackendValidationErrors(parseHttpErrorMessages(error));
         })
         .finally(() => {
             setLoading(false);
@@ -44,9 +49,11 @@ export function PostDetails() {
     return (
         <>
             {isLoading ? (
-                <p>Loading...</p>
-            ) : (    
-                <>            
+                <LoadingIndicator />
+            ) : backendValidationErrors.length > 0 ? (
+                <NotFoundPage />
+            ) : (
+                <>
                     {post ? (
                         <>
                             <h2>{post.title}</h2>
@@ -55,10 +62,11 @@ export function PostDetails() {
                             {post.comments?.map(comment => (
                                 <CommentCard 
                                     key={comment.id} 
-                                    comment={comment} />
+                                    comment={comment} 
+                                />
                             ))}
                         </>
-                    ) : <NotFoundPage />}
+                    ) : null}
                 </>
             )}
         </>
