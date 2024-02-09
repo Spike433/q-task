@@ -1,9 +1,10 @@
+import React from "react";
 
 interface PostSearchProps {
     onFiltersChange: (search: string) => void;
 }
 
-export const  PostSearch = ({onFiltersChange}: PostSearchProps) => {
+export const  PostSearch = ({onFiltersChange}: PostSearchProps) => {    
     return (
         <div>
              <input
