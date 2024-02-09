@@ -16,3 +16,8 @@ export const paths: ApplicationRoute[] = [{
 //   }
 // ];
 
+export const routes = {
+  index: '/',
+  posts: '/posts',
+  postDetails: '/posts/:postId',
+}
