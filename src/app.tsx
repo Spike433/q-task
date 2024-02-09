@@ -5,6 +5,7 @@ import { paths } from './paths';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { PostsPage } from './pages/Posts/Posts';
 import { PostDetails } from './pages/Posts/PostDetails';
+import { HomePage } from './pages/Home/Home';
 
 export function App() {
   return (
@@ -20,7 +21,11 @@ export function App() {
             element={element}
           />
         ))} */}
+        
         <Route path="/"
+          element={<HomePage/>} />
+
+        <Route path="/posts"
           element={<PostsPage/>} />
         
         <Route path='/posts/:postId'
