@@ -2,7 +2,7 @@ import React  from 'react';
 import LoadingIndicator, {  } from 'src/components/core/loading-indicator/loading';
 import { PostCard } from 'src/components/posts/post-card';
 import { PostSearch } from 'src/components/posts/post-search';
-import useDebounce from 'src/hooks/use-debounce';
+import { useDebounce } from 'src/hooks/use-debounce';
 import { usePostSearch } from 'src/hooks/use-search-params';
 import { ApiServices } from 'src/services';
 import { Post } from 'src/services/types';

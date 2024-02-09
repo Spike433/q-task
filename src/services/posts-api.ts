@@ -19,6 +19,10 @@ class PostAPI extends BaseAPI{
     public getPosts(query:string | undefined): AxiosPromise<IPost[]>{        
         return this.instance.get(`/posts?author_like=${query}`);
     }
+
+    public getPostById(id: number): AxiosPromise<IPost>{        
+        return this.instance.get(`/posts/${id}`);
+    }
 }
 
 export default PostAPI.Instance;
