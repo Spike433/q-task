@@ -39,7 +39,6 @@ interface Router {
 
 /**
  * This is a wrapper over `react-router/useNavigate` hook.
- * We use this to help us maintain consistency between CRA and Next.js
  */
 export const useRouter = (): Router => {
   const navigate = useNavigate();
@@ -49,8 +48,8 @@ export const useRouter = (): Router => {
       back: () => navigate(-1),
       forward: () => navigate(1),
       refresh: () => navigate(0),
-      push: (href: string, options?: NavigateOptions) => navigate(href),
-      replace: (href: string, options?: NavigateOptions) => navigate(href, { replace: true }),
+      push: (href: string) => navigate(href),
+      replace: (href: string) => navigate(href, { replace: true }),
       prefetch: (href: string) => {},
     };
   }, [navigate]);
