@@ -4,11 +4,11 @@ import { useMounted } from "./use-mounted";
 export const useDebounce = (value:string | undefined, delay = 500) =>
 {
     const [debouncedValue, setDebouncedValue] = React.useState(value);
-    const mounted = useMounted();
+    const isMounted = useMounted();
     
     React.useEffect(() => {
         const handler = setTimeout(() => {
-        if(mounted()){
+        if(isMounted()){
             setDebouncedValue(value);
         }
         }, delay);
@@ -16,7 +16,7 @@ export const useDebounce = (value:string | undefined, delay = 500) =>
         return () => {
         clearTimeout(handler);
         };
-    }, [value, delay, mounted]);
+    }, [value, delay, isMounted]);
     
     return debouncedValue;
 }

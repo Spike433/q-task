@@ -3,12 +3,14 @@ import LoadingIndicator, {  } from 'src/components/core/loading-indicator/loadin
 import { PostCard } from 'src/components/posts/post-card';
 import { PostSearch } from 'src/components/posts/post-search';
 import { useDebounce } from 'src/hooks/use-debounce';
+import { useMounted } from 'src/hooks/use-mounted';
 import { usePostSearch } from 'src/hooks/use-search-params';
 import { ApiServices } from 'src/services';
 import { Post } from 'src/services/types';
 
 export function PostsPage(){  
-  const postsSearch = usePostSearch();  
+  const postsSearch = usePostSearch();
+  const isMounted = useMounted();
   const [posts, setPosts] = React.useState<Post[]>([]);
   const [isLoading, setLoading] = React.useState(false);
 
@@ -26,7 +28,9 @@ export function PostsPage(){
       { signal: controller.signal}
     ])
     .then(([{ data: posts}]) => {
-      setPosts(posts);
+      if(isMounted()){
+        setPosts(posts);
+      }
     })
     .catch(error => {
       console.log(error);    
@@ -38,7 +42,7 @@ export function PostsPage(){
     return () => {
       controller.abort();
     };
-  },[debouncedSearch])
+  },[debouncedSearch, isMounted])
   
   return (
   <>   
