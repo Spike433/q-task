@@ -1,13 +1,16 @@
 import { Post } from "src/services/types";
 import { CommentCard } from "./comment-card";
+import { useRouter } from "src/hooks/use-router";
 
 interface PostProps {
     post: Post;
 }
 
 export const PostCard = ({post}: PostProps) => {
+  const navigation = useRouter();
+
   const handlePostClick = (id: number) => {
-    console.log('Post clicked:', id);
+    navigation.push(`/posts/${id}`);
   }
     return (
         <div 
@@ -29,7 +32,7 @@ export const PostCard = ({post}: PostProps) => {
             <img 
               style={{ margin: '5px' }}
               src={`https://picsum.photos/seed/${post.id}/70`} 
-              alt="Post"           
+              alt="Post"
             />
           </div>
           <hr/>

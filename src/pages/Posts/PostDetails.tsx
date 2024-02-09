@@ -1,10 +1,11 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useParams } from "react-router";
 import { CommentCard } from "src/components/posts/comment-card";
 import { ApiServices } from "src/services";
 import { Post } from "src/services/types";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 import { useMounted } from "src/hooks/use-mounted";
+import { isIdValid } from "src/utils/id-validator";
 
 export function PostDetails() {
     const { postId } = useParams();
@@ -16,7 +17,7 @@ export function PostDetails() {
     React.useEffect(() => {
         const controller = new AbortController();
         
-        if(postId === undefined || isNaN(+postId)){
+        if(!isIdValid(postId)){
             controller.abort();
             return;
         };
@@ -24,7 +25,7 @@ export function PostDetails() {
         setLoading(true);
             
         Promise.all([
-            ApiServices.postService.getPostById(+postId),
+            ApiServices.postService.getPostById(+postId!),
             { signal: controller.signal }
         ])
         .then(([{ data: post }]) => {
