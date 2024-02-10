@@ -26,7 +26,10 @@ const PostCardBase = ({post, logMessage}: PostProps) => {
             backgroundColor: '#f5f2f2b7',
             borderRadius: '5px',
             cursor: 'pointer'
+            borderRadius: '5px',
+            cursor: 'pointer'
           }}
+          onClick={() => handlePostClick(post.id)}
           onClick={() => handlePostClick(post.id)}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent:'space-between' }}>
