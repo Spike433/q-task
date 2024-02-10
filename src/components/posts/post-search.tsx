@@ -1,9 +1,10 @@
+import { WithLoggingProps, withLogging } from "../core/logger/logger";
 
-interface PostSearchProps {
+interface PostSearchProps extends WithLoggingProps{
     onFiltersChange: (search: string) => void;
 }
 
-export const  PostSearch = ({onFiltersChange}: PostSearchProps) => {
+const  PostSearchBase = ({onFiltersChange }: PostSearchProps) => {
     return (
         <div>
              <input
@@ -15,3 +16,5 @@ export const  PostSearch = ({onFiltersChange}: PostSearchProps) => {
         </div>
     );
 }
+
+export const PostSearch = withLogging(PostSearchBase, 'PostSearch');

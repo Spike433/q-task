@@ -14,9 +14,9 @@ export function PostsPage(){
   const [posts, setPosts] = React.useState<Post[]>([]);
   const [isLoading, setLoading] = React.useState(false);
 
+  const consoleMessage = "Hello from component using HOC: ";
   const debouncedSearch = useDebounce(postsSearch.state.query, 250);
-  console.log('renders');
-
+  
   React.useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
@@ -45,10 +45,12 @@ export function PostsPage(){
   },[debouncedSearch, isMounted])
   
   return (
-  <>   
+  <>
     <div style={{margin:'10px'}}>
       <h1 style={{ color: '#333', fontFamily: 'Arial' }}>Posts</h1>
-     <PostSearch onFiltersChange={postsSearch.handleFiltersChange}/>
+     <PostSearch 
+        logMessage={consoleMessage}  
+        onFiltersChange={postsSearch.handleFiltersChange}/>
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
       {isLoading ? <LoadingIndicator />:
