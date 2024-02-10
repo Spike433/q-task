@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/Spike433/q-task/compare/v1.2.0...v1.3.0) (2024-02-09)
+
+
+### Features
+
+* add home page ([c1b96c9](https://github.com/Spike433/q-task/commit/c1b96c9f7a785661f43f398dd2da4eba0d49ef09))
+* add id validator ([c647b0e](https://github.com/Spike433/q-task/commit/c647b0e30f449d8ae9af5fd370fae28ebded8d87))
+* add pnew product id page ([6437a2e](https://github.com/Spike433/q-task/commit/6437a2e92b8d80fc038aa400661442342576f3b8))
+* prevent memory leaks ([5e76a4c](https://github.com/Spike433/q-task/commit/5e76a4c87888bfe2fad190ad2d7d27b02ec95812))
+
 # [1.2.0](https://github.com/Spike433/q-task/compare/v1.1.0...v1.2.0) (2024-02-09)
 
 
