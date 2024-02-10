@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Spike433/q-task/compare/v1.5.0...v1.6.0) (2024-02-10)
+
+
+### Features
+
+* update readme ([9102a9f](https://github.com/Spike433/q-task/commit/9102a9f9512bb54ddaa072c6235f77211fad0b07))
+
 # [1.5.0](https://github.com/Spike433/q-task/compare/v1.4.0...v1.5.0) (2024-02-10)
 
 
