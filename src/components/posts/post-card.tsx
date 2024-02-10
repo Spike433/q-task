@@ -1,7 +1,7 @@
 import { Post } from "src/services/types";
 import { CommentCard } from "./comment-card";
 import { useRouter } from "src/hooks/use-router";
-import { withLogging } from "../core/logger/logger";
+import { WithLogging } from "../core/logger/logger";
 
 interface PostProps {
     post: Post;
@@ -55,4 +55,4 @@ const PostCardBase = ({post, logMessage}: PostProps) => {
     );
 }
 
-export const PostCard = withLogging(PostCardBase, 'PostCard');
+export const PostCard = WithLogging(PostCardBase, 'PostCard');

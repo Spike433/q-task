@@ -1,5 +1,5 @@
 import { Comment } from "src/services/types";
-import { withLogging } from "../core/logger/logger";
+import { WithLogging } from "../core/logger/logger";
 
 interface CommentProps {
     comment: Comment;
@@ -15,4 +15,4 @@ const CommentCardBase = ({comment}: CommentProps) => {
     );
 }
 
-export const CommentCard = withLogging(CommentCardBase, 'CommentCard');
+export const CommentCard = WithLogging(CommentCardBase, 'CommentCard');

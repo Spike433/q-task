@@ -1,4 +1,4 @@
-import { WithLoggingProps, withLogging } from "../core/logger/logger";
+import { WithLoggingProps, WithLogging } from "../core/logger/logger";
 
 interface PostSearchProps extends WithLoggingProps{
     onFiltersChange: (search: string) => void;
@@ -17,4 +17,4 @@ const  PostSearchBase = ({onFiltersChange }: PostSearchProps) => {
     );
 }
 
-export const PostSearch = withLogging(PostSearchBase, 'PostSearch');
+export const PostSearch = WithLogging(PostSearchBase, 'PostSearch');

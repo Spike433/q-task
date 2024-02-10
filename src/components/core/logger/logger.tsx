@@ -5,7 +5,7 @@ export interface WithLoggingProps {
     logMessage: string;
 }
 
-export const withLogging = <P extends object>(Component: React.ComponentType<P>, componentName: string) => {
+export const WithLogging = <P extends object>(Component: React.ComponentType<P>, componentName: string) => {
     class WithLogging extends React.Component<P & WithLoggingProps> {
         
         componentDidMount() {

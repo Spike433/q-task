@@ -1,29 +1,23 @@
-# Getting Started with Vite + React
+## Setup
 
-## Available Scripts
+- Clone the project repository.
+- Install `node`>=`20.9.0`.
 
-In the project directory, you can run:
+### Install Dependencies
 
-### `npm run dev`
+#### NPM
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Run `npm i`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### BUN
 
-### `npm run build`
+- `BUN` is a package manager, like `yarn` or `npm` but extremely fast.
+- It must be run on `mac` or `linux`.
+- For Windows, please install `wsl2`.
+- To install dependencies, run `bun i`.
 
-Builds the app for production to the `dist` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Start code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://vitejs.dev/guide/static-deploy.html) for more information.
-
-## Learn More
-
-You can learn more in the [Vite documentation](https://vitejs.dev/guide/).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Run `bun dev` or `npm run dev`.
+- The application will be available on [http://localhost:3005/](http://localhost:3005/) or
+  deployed version [https://q-task.azurewebsites.net/](https://q-task.azurewebsites.net/) (wait few minutes until pod is started)
