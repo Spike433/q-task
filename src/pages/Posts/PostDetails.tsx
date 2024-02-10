@@ -57,11 +57,6 @@ export function PostDetails() {
                 <NotFoundPage />
             ) : (
                 <>
-                <LoadingIndicator />
-            ) : backendValidationErrors.length > 0 ? (
-                <NotFoundPage />
-            ) : (
-                <>
                     {post ? (
                         <>
                             <h2>{post.title}</h2>
@@ -75,8 +70,7 @@ export function PostDetails() {
                                 />
                             ))}
                         </>
-                    ) : null}
-                    ) : null}
+                    ) : null}                    
                 </>
             )}
         </>
