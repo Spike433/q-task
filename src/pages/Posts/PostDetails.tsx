@@ -17,9 +17,7 @@ export function PostDetails() {
     const [post, setPost] = React.useState<Post | null>(null);
     const [isLoading, setLoading] = React.useState(false);
     const [backendValidationErrors, setBackendValidationErrors] = React.useState<string[]>([]);
-    
-    console.log('renders');
-    
+        
     React.useEffect(() => {
         const controller = new AbortController();
         
@@ -37,13 +35,17 @@ export function PostDetails() {
         .then(([{ data: post }]) => {
             if(isMounted()){
                 setPost(post);
-            }            
+            }
         })
         .catch(error => {
-            setBackendValidationErrors(parseHttpErrorMessages(error));
+            if(isMounted()){
+                setBackendValidationErrors(parseHttpErrorMessages(error));
+            }
         })
         .finally(() => {
-            setLoading(false);
+            if(isMounted()){
+                setLoading(false);
+            }
         });
     }, [postId, isMounted]);
 
