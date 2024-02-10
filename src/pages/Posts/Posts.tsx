@@ -7,6 +7,7 @@ import { useMounted } from 'src/hooks/use-mounted';
 import { usePostSearch } from 'src/hooks/use-search-params';
 import { ApiServices } from 'src/services';
 import { Post } from 'src/services/types';
+import { consoleMessage } from 'src/utils/app.config';
 
 export function PostsPage(){  
   const postsSearch = usePostSearch();
@@ -14,7 +15,6 @@ export function PostsPage(){
   const [posts, setPosts] = React.useState<Post[]>([]);
   const [isLoading, setLoading] = React.useState(false);
 
-  const consoleMessage = "Hello from component using HOC: ";
   const debouncedSearch = useDebounce(postsSearch.state.query, 250);
   
   React.useEffect(() => {
@@ -49,7 +49,7 @@ export function PostsPage(){
     <div style={{margin:'10px'}}>
       <h1 style={{ color: '#333', fontFamily: 'Arial' }}>Posts</h1>
      <PostSearch 
-        logMessage={consoleMessage}  
+        logMessage={consoleMessage}
         onFiltersChange={postsSearch.handleFiltersChange}/>
     </div>    
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
@@ -57,7 +57,9 @@ export function PostsPage(){
       posts?.map((post) => (        
        <PostCard 
           key={post.id}  
-          post={post} />
+          post={post} 
+          logMessage={consoleMessage}
+          />
       ))}
     </div>
   </>

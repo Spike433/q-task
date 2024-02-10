@@ -1,12 +1,14 @@
 import { Post } from "src/services/types";
 import { CommentCard } from "./comment-card";
 import { useRouter } from "src/hooks/use-router";
+import { withLogging } from "../core/logger/logger";
 
 interface PostProps {
     post: Post;
+    logMessage: string;
 }
 
-export const PostCard = ({post}: PostProps) => {
+const PostCardBase = ({post, logMessage}: PostProps) => {
   const navigation = useRouter();
 
   const handlePostClick = (id: number) => {
@@ -45,8 +47,12 @@ export const PostCard = ({post}: PostProps) => {
           {post.comments.map((comment) => (
             <CommentCard 
               key={comment.id} 
-              comment={comment} />
+              comment={comment} 
+              logMessage={logMessage}
+              />
           ))}
         </div>
     );
 }
+
+export const PostCard = withLogging(PostCardBase, 'PostCard');

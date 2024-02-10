@@ -8,6 +8,7 @@ import { useMounted } from "src/hooks/use-mounted";
 import { isIdValid } from "src/utils/id-validator";
 import { parseHttpErrorMessages } from "src/utils/httpErrorParse";
 import LoadingIndicator from "src/components/core/loading-indicator/loading";
+import { consoleMessage } from "src/utils/app.config";
 
 export function PostDetails() {
     const { postId } = useParams();
@@ -60,9 +61,10 @@ export function PostDetails() {
                             <p>{post.description}</p>
                             <h3>Comments</h3>
                             {post.comments?.map(comment => (
-                                <CommentCard 
+                                <CommentCard                                     
                                     key={comment.id} 
                                     comment={comment} 
+                                    logMessage={consoleMessage}
                                 />
                             ))}
                         </>
