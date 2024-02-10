@@ -1,3 +1,18 @@
+# [1.4.0](https://github.com/Spike433/q-task/compare/v1.3.0...v1.4.0) (2024-02-10)
+
+
+### Features
+
+* add home page ([37ab584](https://github.com/Spike433/q-task/commit/37ab584b283e8fa7c016571b2d3baafaa47f0e26))
+* add http parser ([9569ae6](https://github.com/Spike433/q-task/commit/9569ae65aff2dacc77422b291b258271c9c658c5))
+* add http parser ([9320b55](https://github.com/Spike433/q-task/commit/9320b55ee25819cf8b044c112c961cc797f7bb4b))
+* add id validator ([997bd1e](https://github.com/Spike433/q-task/commit/997bd1eeccf64b24e630185037e8a3091cfd60a2))
+* add logger ([db73549](https://github.com/Spike433/q-task/commit/db73549a0ae0feff5f35e520e21c5260deb3cd7d))
+* add pnew product id page ([8853047](https://github.com/Spike433/q-task/commit/88530477507f670a17001c276e2e6eb06d20c063))
+* component renders ([2be1f05](https://github.com/Spike433/q-task/commit/2be1f0567a6765002ce70fafe691f43cec671fca))
+* prevent memory leaks ([1ca3864](https://github.com/Spike433/q-task/commit/1ca38642f9cca8ceaf213beccb91d5291afa1ee6))
+* update details ([48aa50b](https://github.com/Spike433/q-task/commit/48aa50ba3a0567556b2c1901ad28885348732eaf))
+
 # [1.3.0](https://github.com/Spike433/q-task/compare/v1.2.0...v1.3.0) (2024-02-09)
 
 
