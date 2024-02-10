@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/Spike433/q-task/compare/v1.4.0...v1.5.0) (2024-02-10)
+
+
+### Features
+
+* update bad resolution ([c902a8c](https://github.com/Spike433/q-task/commit/c902a8c4b711122e286902e0bff77b0b343a5fdd))
+* update MR conflict ([9a25267](https://github.com/Spike433/q-task/commit/9a252674a2d033bf263743c1c146669f61eeba56))
+
 # [1.4.0](https://github.com/Spike433/q-task/compare/v1.3.0...v1.4.0) (2024-02-10)
 
 
